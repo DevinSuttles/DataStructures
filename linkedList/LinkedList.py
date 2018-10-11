@@ -41,9 +41,25 @@ class LinkedList:
             temp.next=temp2
         self.m_size+=1
     def clear(self):
+        self.m_size=0
         self.m_front = None
     def printList(self):
         temp=self.m_front
         while temp!=None:
             print(temp.data)
             temp=temp.next
+    def remove(self,position):
+        if self.m_size<=0:
+            self.m_front=None
+            self.m_size=0
+        if position==1:
+            temp=self.m_front
+            temp.data=None
+            temp=temp.next
+            self.m_front=temp
+        elif position==self.m_size:
+            temp=self.m_front
+            while temp.next!=None:
+                temp=temp.next
+            temp.data=None
+        self.m_size-=1
