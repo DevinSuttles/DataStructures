@@ -34,7 +34,7 @@ class LinkedList:
         else:
             temp=self.m_front
             temp2=Node()
-            for x in range(1,position-1):
+            for i in range(1,position-1):
                 temp=temp.next
             temp2.data=value
             temp2.next=temp.next
@@ -54,12 +54,19 @@ class LinkedList:
             self.m_size=0
         if position==1:
             temp=self.m_front
-            temp.data=None
             temp=temp.next
             self.m_front=temp
         elif position==self.m_size:
             temp=self.m_front
-            while temp.next!=None:
+            for i in range(1,position-1):
                 temp=temp.next
-            temp.data=None
+            temp.next=None
+        else:
+            temp=self.m_front
+            for i in range(1,position):
+                temp=temp.next
+            jumper=self.m_front
+            while jumper.next != temp:
+                jumper=jumper.next
+            jumper.next=temp.next
         self.m_size-=1
