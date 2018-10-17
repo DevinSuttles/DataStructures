@@ -17,6 +17,9 @@ class LinkedList:
                 return True
             temp=temp.next
         return False
+    def getEntry(self,position):
+        if position<=1:
+            return self.m_front.data
     def insert(self,position,value):
         if position==1:
             temp=Node()
