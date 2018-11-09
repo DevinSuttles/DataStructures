@@ -20,6 +20,11 @@ class LinkedList:
     def getEntry(self,position):
         if position<=1:
             return self.m_front.data
+        else:
+            temp=self.m_front
+            for i in range(1,position):
+                temp=temp.next
+            return temp.data
     def insert(self,position,value):
         if position==1:
             temp=Node()
