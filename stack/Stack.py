@@ -8,7 +8,7 @@ class Stack:
         self.stack.data=value
     def peek(self):
         if self.isEmpty():
-            print("Nothing to peek stack is empyty")
+            raise Exception("No value to peek in the stack")
         return self.stack.data
     def push(self,value):
         temp=Node()
@@ -18,7 +18,7 @@ class Stack:
         self.stack=temp
     def pop(self):
         if self.isEmpty():
-            print("Nothing to pop from the stack")
+            raise Exception("Nothing to pop in the stack")
         temp=self.stack
         temp=temp.next
         self.stack=temp
