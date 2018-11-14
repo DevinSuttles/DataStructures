@@ -17,11 +17,11 @@ class Queue:
         temp.next=temp2
     def peek(self):
         if self.isEmpty():
-            print("No value to peek")
+            raise Exception("No values to peek")
         return self.que.data
     def dequeue(self):
         if self.isEmpty():
-            print("Nothing to remove")
+            raise Exception("No values to dequeue")
         temp=self.que
         temp=temp.next
         self.que=temp
