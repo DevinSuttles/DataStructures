@@ -10,11 +10,27 @@ class BinarySearchTree:
     def isEmpty(self):
         return self.root==None
     def height(self):
-        if self.isEmpty():
-            raise Exception("No value in binary tree so height is zero.")
         return self._height(self.root)
     def _height(self,root):
         if root==None:
             return 0
         else:
-            return 1+self._height(root.leftChild)+self._height(root.rightChild)
+            return 1+max(self._height(root.leftChild),self._height(root.rightChild))
+    def numberOfNodes(self):
+        return self._numberOfNodes(self.root)
+    def _numberOfNodes(self,root):
+        if root==None:
+            return 0
+        else:
+            return 1+self._numberOfNodes(root.leftChild)+self._numberOfNodes(root.rightChild)
+    def find(self,value):
+        return self._find(self,self.root,value)!=None
+    def _find(self,root,value):
+        if root==None:
+            return None
+        elif value<root.data:
+            self._find(root.leftChild,value)
+        elif value>root.data:
+            self._find(root.rightChild,value)
+        elif root.data==value:
+            return root
