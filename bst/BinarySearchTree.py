@@ -34,3 +34,45 @@ class BinarySearchTree:
             self._find(root.rightChild,value)
         elif root.data==value:
             return root
+    def insert(self,value):
+        if self.root==None:
+            self.root=BinaryNode()
+            self.root.data=value
+        else:
+            self._insert(self.root,value)
+    def _insert(self,root,value):
+        if value>root.data:
+            if root.rightChild==None:
+                temp=BinaryNode()
+                temp.data=value
+                root.rightChild=temp
+            else:
+                self._insert(root.rightChild,value)
+        if value<=root.data:
+            if root.leftChild==None:
+                temp=BinaryNode()
+                temp.data=value
+                root.leftChild=temp
+            else:
+                self._insert(root.leftChild,value)
+    def _inorder(self,root):
+        if root!=None:
+            self._inorder(root.leftChild)
+            print(root.data)
+            self._inorder(root.rightChild)
+    def inorder(self):
+        self._inorder(self.root)
+    def _preorder(self,root):
+        if root!=None:
+            print(root.data)
+            self._preorder(root.leftChild)
+            self._preorder(root.rightChild)
+    def preorder(self):
+        self._preorder(self.root)
+    def _postorder(self,root):
+        if root!=None:
+            self._postorder(root.leftChild)
+            self._postorder(root.rightChild)
+            print(root.data)
+    def postorder(self):
+        self._postorder(self.root)
