@@ -18,7 +18,11 @@ class LinkedList:
             temp=temp.next
         return False
     def getEntry(self,position):
-        if position<=1:
+        if self.isEmpty():
+            raise Exception("Can not getEnty because the LinkedList is Empty")
+        elif position<1:
+            raise Exception("Can not getEntry of a size less than one")
+        elif position==1:
             return self.m_front.data
         else:
             temp=self.m_front
@@ -26,7 +30,9 @@ class LinkedList:
                 temp=temp.next
             return temp.data
     def insert(self,position,value):
-        if position==1:
+        if position<1 or position>(self.m_size+1):
+            raise Exception("Invalid positon value")
+        elif position==1:
             temp=Node()
             temp.data=value
             temp.next=self.m_front
@@ -50,7 +56,7 @@ class LinkedList:
         self.m_size+=1
     def clear(self):
         self.m_size=0
-        self.m_front = None
+        self.m_front=None
     def printList(self):
         temp=self.m_front
         while temp!=None:
