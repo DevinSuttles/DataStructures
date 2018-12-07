@@ -48,7 +48,7 @@ class BinarySearchTree:
                 root.rightChild=temp
             else:
                 self._insert(root.rightChild,value)
-        if value<=root.data:
+        if value<root.data:
             if root.leftChild==None:
                 temp=BinaryNode()
                 temp.data=value
