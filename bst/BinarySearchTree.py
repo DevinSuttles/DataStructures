@@ -78,7 +78,3 @@ class BinarySearchTree:
             print(root.data)
     def postorder(self):
         self._postorder(self.root)
-    def delete(self,value):
-        root=self.root
-        if root==None:
-            raise Exception("Nothing to delte")
