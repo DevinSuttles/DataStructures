@@ -2,20 +2,26 @@ class MaxHeap(object):
 
     def __init__(self):
         self.list=[]
-        self.size=-1
 
+#adds to the max heap
     def push(self,value):
         self.list.append(value)
-        self.size+=1
-        if self.size!=0:
-
-#returns the size of the heap
-    def getSize(self):
-        return self.size
+        self._upHeap(len(self.list)-1)
 
 #gives back the MaxValue
     def peek(self):
-        if self.size != -1:
-            return self.list[0]
+        if self.size != 0:
+            return self.list[1]
 
-max=MaxHeap()
+#swap
+    def _swap(self, i , j):
+        self.list[i],self.list[j]=self.list[j],self.list[i]
+
+#upheap
+    def _upHeap(self,i):
+        parent=i//2
+        if i <=1:
+            return
+        elif self.list[i] > self.list[parent]:
+            self._swap(i,parent)
+            self._upHeap(parent)
