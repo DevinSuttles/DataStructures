@@ -1,27 +1,36 @@
+import math
 class MaxHeap(object):
 
     def __init__(self):
         self.list=[]
+        self.count=-1
 
-#adds to the max heap
+
     def push(self,value):
+        self.count=self.count+1
         self.list.append(value)
-        self._upHeap(len(self.list)-1)
+        self._downHeap(self.count)
 
-#gives back the MaxValue
+
     def peek(self):
-        if self.size != 0:
-            return self.list[1]
+        if self.count != -1:
+            return self.list[0]
 
-#swap
+
     def _swap(self, i , j):
         self.list[i],self.list[j]=self.list[j],self.list[i]
 
-#upheap
-    def _upHeap(self,i):
-        parent=i//2
-        if i <=1:
-            return
-        elif self.list[i] > self.list[parent]:
-            self._swap(i,parent)
-            self._upHeap(parent)
+    def buildHeap(self):
+        self._upHeap(self.count)
+
+
+    def levelOrder(self):
+        for i in self.list:
+            print(i,end=" ")
+
+
+    def _downHeap(self,index):
+        parent=math.floor((index-1)/2)
+        print(parent)
+        if self.list[parent]<self.list[index]:
+            self._swap(index,parent)
